@@ -213,7 +213,7 @@ public class AudioRecord extends JFrame implements ActionListener, LineListener{
 			  	          soundClip.start();
 			  	  		}*/
 
-						playBtn.setEnabled(true);
+//						playBtn.setEnabled(true);
 						
 	  	        	}catch(Exception ex){
 	  	        		ex.printStackTrace();
@@ -391,6 +391,8 @@ public class AudioRecord extends JFrame implements ActionListener, LineListener{
 	    		updater.stop();
 	    		statusLabel.setText("Stopped");
 	    		progressBar.setString("");
+  	        	playBtn.setEnabled(true);
+  	        	stopPlayBtn.setEnabled(false);
 //	            progressBar.setIndeterminate(true);
 		 }
 
