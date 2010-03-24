@@ -27,6 +27,7 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.Timer;
 import javax.swing.border.EtchedBorder;
+import javax.swing.filechooser.FileFilter;
 
 import org.code4fun.AudioPlayer;
 
@@ -363,7 +364,25 @@ public class AudioRecord extends JFrame implements ActionListener, LineListener{
 		public static File showFC() throws IOException
 		{		    
 			fc.showSaveDialog(null);
-			return fc.getSelectedFile();
+
+
+			  File file = fc.getSelectedFile(); 
+			  String path = file.getAbsolutePath(); 
+			 
+			  //String extension = getExtensionForFilter(fc.getFileFilter()); 
+			  FileFilter ff = fc.getFileFilter();
+			  
+			  String nameDesc = ff.getDescription();
+			  String extName = "wav";
+			  if(nameDesc.indexOf("WAV") == -1 ){
+				  extName = "mp3";
+			  }
+			  
+
+			 file = new File(path + "." + extName); 
+
+			  
+			return file;
 		}
 		
 	public void update(LineEvent le) {
