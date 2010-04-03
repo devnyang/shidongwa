@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<language_setting>
+	<title_bar_text data="DalSong" />
+	<playlist_title_bar_test data="Playlist" />
+	<menu>
+		<file data="File">
+			<open data="Open" />
+			<playlist data="Playlist" />
+			<exit data="Exit" />
+		</file>
+		<option data="Option">
+			<mini_mode data="Mini Mode" />
+			<lyric_mode data="Lyric Mode" />
+			<sync data="Lyric Sync" />
+			<font data="Font Setting" />
+		</option>
+		<theme data="Theme" >
+		</theme>
+		<help data="Help">
+			<about data="About" />
+		</help>
+	</menu>
+	<popup_menu>
+		<delete data="Delete selected file(s)" />
+		<information data="Information" />
+	</popup_menu>
+	<tag_infomation>
+		<track data="Track#" />
+		<title data="Title" />
+		<artist data="Artist" />
+		<album data="Album" />
+		<year data="Year" />
+		<genre data="Genre" />
+		<comment data="Comment" />
+		<composer data="Composer" />
+		<original_artist data="Original Artist" />
+		<copyright data="Copyright" />
+		<url data="URL" />
+		<encoded_by data="Encoded by" />
+	</tag_infomation>
+</language_setting>

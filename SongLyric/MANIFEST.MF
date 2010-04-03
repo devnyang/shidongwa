@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Main-Class: dalsong.player.DalSongPlayer
+Class-Path: jar/jl1.0.jar jar/mp3spi1.9.4.jar jar/jorbis-0.0.15.jar jar/jogg-0.0.7.jar jar/vorbisspi1.0.2.jar jar/tritonus_share.jar jar/jspeex0.9.7.jar jar/basicplayer3.0.jar jar/commons-logging-api.jar jar/forms-1.0.7.jar jar/looks-2.1.4.jar jar/jid3lib-0.5.4.jar jar/filedrop.jar
+
+
+
