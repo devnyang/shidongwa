@@ -72,15 +72,7 @@ import dalsong.util.JFontChooser;
 import dalsong.util.Utility;
 
 public class DalSongPlayer extends JFrame implements  ActionListener {
-	
-/*    static {
-        try {
-            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-        } catch (Exception exe) {
-            exe.printStackTrace();
-        }
-    }*/
-    
+	    
 	
 	private static final long serialVersionUID = 1L;
 	public static final int ENGLISH_MODE = 0;
