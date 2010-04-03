@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="jar/basicplayer3.0.jar"/>
+	<classpathentry kind="lib" path="jar/commons-logging-api.jar"/>
+	<classpathentry kind="lib" path="jar/filedrop.jar"/>
+	<classpathentry kind="lib" path="jar/forms-1.0.7.jar"/>
+	<classpathentry kind="lib" path="jar/jid3lib-0.5.4.jar"/>
+	<classpathentry kind="lib" path="jar/jl1.0.jar"/>
+	<classpathentry kind="lib" path="jar/looks-2.1.4.jar"/>
+	<classpathentry kind="lib" path="jar/mp3spi1.9.4.jar"/>
+	<classpathentry kind="lib" path="jar/tritonus_share.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
