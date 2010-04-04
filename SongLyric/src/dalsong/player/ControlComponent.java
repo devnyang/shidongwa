@@ -214,7 +214,7 @@ public class ControlComponent extends JPanel implements BasicPlayerListener{
 		if (jButton2 == null) {
 			jButton2 = new JButton();
 			jButton2.setIcon(imgPrev);
-			jButton2.setToolTipText("이전곡");
+			jButton2.setToolTipText("Prev");
 			jButton2.setPreferredSize(comSize);
 			jButton2.setMargin(new Insets(0, 0, 0, 0));
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -235,7 +235,7 @@ public class ControlComponent extends JPanel implements BasicPlayerListener{
 		if (jButton3 == null) {
 			jButton3 = new JButton();
 			jButton3.setIcon(imgNext);
-			jButton3.setToolTipText("다음곡");
+			jButton3.setToolTipText("Next");
 			jButton3.setPreferredSize(comSize);
 			jButton3.setMargin(new Insets(0, 0, 0, 0));
 			jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -250,7 +250,7 @@ public class ControlComponent extends JPanel implements BasicPlayerListener{
 		if (jButton21 == null) {
 			jButton21 = new JButton();
 			jButton21.setIcon(imgList);
-			jButton21.setToolTipText("플레이리스트");
+			jButton21.setToolTipText("Play List");
 			jButton21.setPreferredSize(comSize);
 			jButton21.setMargin(new Insets(0, 0, 0, 0));
 			jButton21.addActionListener(new java.awt.event.ActionListener() {
@@ -313,7 +313,7 @@ public class ControlComponent extends JPanel implements BasicPlayerListener{
 				volume.setValue(changedGainValue);
 			}
 
-			// 사용자의 볼륨 조절을 받는다.
+			// 
 			volume.addChangeListener(new ChangeListener(){
 				public void stateChanged(ChangeEvent e){
 					changedGainValue = volume.getValue();

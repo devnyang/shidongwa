@@ -25,8 +25,8 @@ public class LyricPane extends JScrollPane{
 	private Integer[] splitTime;
 	private int prevTime = -1;
 	
-	private Font lyricFont = new Font("굴림", Font.PLAIN, 12);
-	private Font lyricBoldFont = new Font("굴림", Font.BOLD, 12);
+	private Font lyricFont = new Font("", Font.PLAIN, 12);
+	private Font lyricBoldFont = new Font("", Font.BOLD, 12);
 	
 	public LyricPane(){
 		super();
@@ -108,7 +108,6 @@ public class LyricPane extends JScrollPane{
 				lyricLabel[i].setFont(lyricFont);
 			}
 		}catch(Exception e){
-			//초기 생성시 lyriclabel이 널이므로 예외발생
 		}
 	}
 	
@@ -120,7 +119,6 @@ public class LyricPane extends JScrollPane{
 				jPane.remove(lyricLabel[i]);
 			}
 		}catch(Exception e){
-			//초기상태에서 lyricLabel이 정의되어 있지 않는데 이럴때 예외가 생긴다.	
 		}
 	}
 	
@@ -157,7 +155,6 @@ public class LyricPane extends JScrollPane{
 	}
 	
 	public void setCurrentLyric(int time){
-		//탐색을 했을 때
 		
 		if(prevTime == -1){
 			prevTime = findSync(time);

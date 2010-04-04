@@ -31,7 +31,7 @@ public class Lyric {
 			
 			result = cli.getResultXmlParsing();
 
-			//result[8]에서 가사가 들어있다.
+			//result[8] lyrics part
 			strLyric = result[8];
 			
 			
