@@ -112,8 +112,8 @@ public class ControlComponent extends JPanel implements BasicPlayerListener{
 	private JButton getJButton() {
 		if (jButton == null) {
 			jButton = new JButton();
-			jButton.setIcon(imgPlay);	//이미지를 버튼에 추가
-			jButton.setToolTipText("재생");
+			jButton.setIcon(imgPlay);	//
+			jButton.setToolTipText("Play");
 			jButton.setPreferredSize(comSize);
 			jButton.setMargin(new Insets(0, 0, 0, 0));
 			jButton.addActionListener(new java.awt.event.ActionListener() {
@@ -131,7 +131,7 @@ public class ControlComponent extends JPanel implements BasicPlayerListener{
 			try{
 				player.pause();
 				jButton.setIcon(imgPlay);
-				jButton.setToolTipText("재생");
+				jButton.setToolTipText("Play");
 			} catch(BasicPlayerException e){
 				e.printStackTrace();
 			}
@@ -140,7 +140,7 @@ public class ControlComponent extends JPanel implements BasicPlayerListener{
 				player.resume();
 				setVolume();
 				jButton.setIcon(imgPause);
-				jButton.setToolTipText("일시정지");
+				jButton.setToolTipText("Pause");
 			} catch(BasicPlayerException e){
 				e.printStackTrace();
 			}
@@ -152,7 +152,7 @@ public class ControlComponent extends JPanel implements BasicPlayerListener{
 				setVolume();
 				
 				jButton.setIcon(imgPause);
-				jButton.setToolTipText("일시정지");
+				jButton.setToolTipText("Pause");
 			} catch(BasicPlayerException e){
 				e.printStackTrace();
 			}
@@ -181,7 +181,7 @@ public class ControlComponent extends JPanel implements BasicPlayerListener{
 		if (jButton1 == null) {
 			jButton1 = new JButton();
 			jButton1.setIcon(imgStop);
-			jButton1.setToolTipText("정지");
+			jButton1.setToolTipText("Stop");
 			jButton1.setPreferredSize(comSize);
 			jButton1.setMargin(new Insets(0, 0, 0, 0));
 			jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -194,7 +194,7 @@ public class ControlComponent extends JPanel implements BasicPlayerListener{
 						jProgbar.setString("- / -");
 						
 						jButton.setIcon(imgPlay);
-						jButton.setToolTipText("재생");
+						jButton.setToolTipText("Play");
 					} catch(BasicPlayerException ex){
 						ex.printStackTrace();
 					}
