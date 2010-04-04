@@ -356,12 +356,10 @@ public class DalSongPlayer extends JFrame implements  ActionListener {
 		} catch (Exception ex) {}
 		
 		
-		//파일선택 다이얼로그도 테마를 적용하기 위해서...
+
 		setLastDirectory(stateDirectiory);
-		//글꼴선택 다이얼로그도 테마를 적용하기 위해서...
 		fontChooser = new JFontChooser(this);
 		fontChooser.setFont(lyricPane.getFont());
-		//플레이리스트 팝업에도...
 		if(playlist != null){
 			playlist.initJPopupMenu();
 			playlist.refreashFileChooserDlg();
@@ -477,12 +475,11 @@ public class DalSongPlayer extends JFrame implements  ActionListener {
 	
 		
 	private void goExit(){
-		System.out.println("藁놔溝固。");
+		System.out.println("exit.");
 		saveState();
 		playlist.saveList();
 	}
 	
-	//파일에 현재상태를 저장한다.
 	private void saveState(){
 		 try {
 		      PrintStream out = new PrintStream(new FileOutputStream("dalsong.ini"));
@@ -618,10 +615,6 @@ public class DalSongPlayer extends JFrame implements  ActionListener {
 						
 		long mTime = mediatime;
 
-		//여기가 좀 야매다... 
-		//mp3가 재생되고 있는 시간(컨트롤에서 실시간으로 넘어옴)과 자막에 있는
-		//시간을 비교해야 하는데 귀찮아서 그냥 ':'와 '.'를 빼고 그냥 붙여서
-		//6자리 int형으로 만들었다..
 		int t = Utility.getTimeNormlType(mTime);
 				
 		try{
@@ -641,7 +634,6 @@ public class DalSongPlayer extends JFrame implements  ActionListener {
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////
-	// ActionListener 구현 부분
 	// ------------------------------------------------------------------------
 	public void actionPerformed(ActionEvent e){
 		String actionCommand = e.getActionCommand();
@@ -673,7 +665,6 @@ public class DalSongPlayer extends JFrame implements  ActionListener {
 		}else if(actionCommand.equals(ABOUT_DLG_ACTION_COMMAND)) {
 			new AboutDialog2(this, languageMode);
 		}else {
-			//테마를 바꾼다.
 
 				if(actionCommand.equals(THMEME_ACTION_COMMAND[0])){
 					setTheme(0);
@@ -723,7 +714,7 @@ public class DalSongPlayer extends JFrame implements  ActionListener {
 		fileDlg.setFileFilter(filter);
 //		recursivelySetFonts(this,new Font("Dialog.plain", Font.PLAIN, 12));
 //		fileDlg.setFont(new Font("Dialog.plain", Font.PLAIN, 12));
-		fileDlg.setDialogTitle("댔역匡숭");
+		fileDlg.setDialogTitle("Open File:");
 		
 		if(fileDlg.showOpenDialog(new javax.swing.JFrame()) == JFileChooser.APPROVE_OPTION){
 //		if(fileDlg.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
@@ -738,7 +729,6 @@ public class DalSongPlayer extends JFrame implements  ActionListener {
 	
 	/*
 	//--------------------------------------------------------------------------
-	//실시간 가사창의 폰트를 바꾸는 메소드
 	private void setTextPaneFont(Font f){
 		StyleConstants.setFontFamily(standard, f.getFontName());
 		StyleConstants.setFontSize(standard, f.getSize());
@@ -754,7 +744,6 @@ public class DalSongPlayer extends JFrame implements  ActionListener {
 	*/
 	
 	// ------------------------------------------------------------------------
-	//콤포넌트의 폰트를 바꾸는 메소드
 	public static void recursivelySetFonts(Component comp, Font font) {
         comp.setFont(font);
         if (comp instanceof Container) {
@@ -789,18 +778,18 @@ public class DalSongPlayer extends JFrame implements  ActionListener {
 			
 			raFile.close();
 		}catch(Exception e){
-			System.out.println("에러!!!!!!!!!");
+			System.out.println("exception when open file!!!!!!!!!");
 			return ;
 		}
 		
-		//mp3 플레이 관련
+
 		controlCmpnt.loadFile(mediaFile, lyrc.getTagSize(), duration);
 		controlCmpnt.playORpause();
 		
-		//제목 표시 관련
+
 		jLabel_SongTitle.setText(mediaFile.getName());
 
-		//실시간 가사 보기 관련
+
 		showLyric(mediaFile.getPath());
 		
 		

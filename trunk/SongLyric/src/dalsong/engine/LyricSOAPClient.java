@@ -144,7 +144,7 @@ public class LyricSOAPClient {
 	} 
 
 
-	//XML을 파싱해서 필요한 부분을 반환한다.
+	//XML
 	public String[] getResultXmlParsing(){
 		String xml = resultStr;
 
@@ -153,14 +153,14 @@ public class LyricSOAPClient {
 		try {
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder builder = factory.newDocumentBuilder();
-			// parse() 메소드에 들어갈 수 있는 인자 중, 아래처럼 URI String 도 있습니다.
+			// parse() 
 
 			InputStream is = new ByteArrayInputStream( xml.getBytes("UTF-8") );
 
 			Document doc = builder.parse(is);
 
 			NodeList channel = doc.getElementsByTagName("GetLyric5Result");
-			// _n 변수에 <GetLyric5Result> ~~~ </GetLyric5Result> 속 노드들 정보가 들어갑니다.
+			// <GetLyric5Result> ~~~ </GetLyric5Result> 
 			NodeList _n = channel.item(0).getChildNodes();
 
 			for (int i=0; i<18; i++) {
@@ -184,12 +184,12 @@ public class LyricSOAPClient {
 		MP3File file = new MP3File();
 		tagSize = (int)file.getMp3StartByte(new File(fileName));
 		
-//		System.out.println("진짜 태그 : " + tagSize);
+		System.out.println("tag size : " + tagSize);
 		
 		MessageDigest md = MessageDigest.getInstance("MD5");
 		FileInputStream fin = new FileInputStream(fileName);
 		
-		// 메시지 축약을 파일로부터 읽어올 객체를 생성
+		// 
 		DigestInputStream in = new DigestInputStream(fin,md);
 
 		fin.getChannel().position(tagSize);
@@ -199,7 +199,7 @@ public class LyricSOAPClient {
 		md = in.getMessageDigest();
 		s = bytesToHex(md.digest());
 		
-		//정보보호를 위한 주석처리
+		//
 //		System.out.println("MD5 Checksum : " + s);
 //		System.out.println("Tag size : " + tagSize);
 
