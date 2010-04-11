@@ -110,9 +110,11 @@ public class DataService {
 	 */
 	public boolean updateItem(TodoItem todo){
 		String query = "UPDATE stodoitem SET type=?, desc=?, timeout=?, period=?, note=?, status=? WHERE itemid="+todo.getId();
+		Connection con = null;
+		PreparedStatement pstat = null;
 		try{
-			Connection con = DriverManager.getConnection("jdbc:sqlite:stodoitem");
-			PreparedStatement pstat = con.prepareStatement(query);
+			con = DriverManager.getConnection("jdbc:sqlite:stodoitem");
+			pstat = con.prepareStatement(query);
 			pstat.setString(1, todo.getType());
 			pstat.setString(2, todo.getDesc());
 			pstat.setString(3, todo.getTimeout());
@@ -123,11 +125,19 @@ public class DataService {
 			pstat.execute();
 			status = true;
 			
-			con.close();
+			
 		}catch(Exception e){
 			e.printStackTrace();
 			message = e.getMessage();
 			status = false;
+		}finally{
+			try {
+				pstat.close();
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}			
 		}
 		
 		return status;
@@ -165,6 +175,39 @@ public class DataService {
 			e.printStackTrace();
 			message = e.getMessage();
 			status = false;
+		}
+		
+		return list;
+	}
+	
+	public List<TodoItem> getAll() {
+		List<TodoItem> list = new LinkedList<TodoItem>();
+		
+		try {
+			Class.forName("org.sqlite.JDBC");
+			Connection con = DriverManager
+					.getConnection("jdbc:sqlite:stodoitem");
+			Statement stat = con.createStatement();
+			String sql = "SELECT itemid, type, desc, timeout, period, note, status FROM stodoitem";
+			ResultSet rs = stat.executeQuery(sql);
+	
+			while (rs.next()) {
+				TodoItem node = new TodoItem();
+				node.setId(String.valueOf(rs.getInt("itemid")));
+				node.setType(rs.getString("type"));
+				node.setDesc(rs.getString("desc"));
+				node.setTimeout(rs.getString("timeout"));
+				node.setPeriod(rs.getString("period"));
+				node.setNote(rs.getString("note"));
+				node.setStatus(rs.getString("status"));
+				list.add(node);
+			}
+			
+			con.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		
 		return list;
