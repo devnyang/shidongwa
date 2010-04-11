@@ -82,10 +82,17 @@ public class FilterableListModel extends AbstractListModel implements
 	}
 
 	public void changedUpdate(DocumentEvent event) {
+		
+		System.out.println("stone is here.");
 	}
 
 	public void clear() {
 		list.clear();
 		filteredList.clear();
 	}
+	
+	//added by stone.
+/*	public void setFireContentsChanged(int index0, int index1){
+		fireContentsChanged(this, index0, index1);
+	}*/
 }
