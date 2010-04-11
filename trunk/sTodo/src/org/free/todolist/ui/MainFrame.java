@@ -37,6 +37,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
+import javax.swing.ListCellRenderer;
 import javax.swing.ListSelectionModel;
 import javax.swing.ToolTipManager;
 import javax.swing.UIManager;
@@ -540,11 +541,26 @@ public class MainFrame extends JFrame{
 			if(titem.getId().equals(item.getId())){
 				model.removeElement(i);
 				model.addElement(item);
+				ftodolist.repaint();
+				//this.scroller.repaint();
+				//added by stone
+				//model.setFireContentsChanged(i, i+1);
+				//ListCellRenderer render = ftodolist.getCellRenderer();
+//				(ListCellRenderer)render.
 				return;
 			}
 		}
 		
 		model.addElement(item);
+		ftodolist.repaint();
+	}
+	
+	public void refreshGUI()
+	{
+		
+		this.ftodolist.repaint();
+		this.scroller.repaint();
+		
 	}
 	
 	/**
@@ -585,6 +601,14 @@ public class MainFrame extends JFrame{
 		for(TodoItem item : list){
 			model.addElement(item);
 		}
+	}
+	
+	public void refreshModel(){
+		
+		FilterableListModel model = ftodolist.getContents();
+		model.clear();
+		
+		initContentList();
 	}
 
 }

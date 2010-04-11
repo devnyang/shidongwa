@@ -188,7 +188,11 @@ public class EditTaskDialog extends javax.swing.JDialog{
 					JOptionPane.showMessageDialog(null, 
 							"Edit on task is saved", "Success", JOptionPane.INFORMATION_MESSAGE);
 					EditTaskDialog.this.parent.updateList(data);
+					//EditTaskDialog.this.parent.refreshModel(ds.getAll());
 					EditTaskDialog.this.setVisible(false);
+//					EditTaskDialog.this.parent.refreshGUI();
+									
+					
 				}else{
 					JOptionPane.showMessageDialog(null, 
 							"Something is wrong", ds.getMessage(), JOptionPane.ERROR_MESSAGE);
