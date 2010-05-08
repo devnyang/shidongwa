@@ -7,7 +7,8 @@ import java.util.regex.Pattern;
 
 public class Lyric {
 	private static final String patternStr = "\\[\\d{2}:\\d{2}\\.\\d{2}\\]";
-	private LyricSOAPClient cli;
+//	private LyricSOAPClient cli;
+	private LyricClient cli;
 	
 	private String[] splitStr;
 	private String[] splitTime;
@@ -26,14 +27,15 @@ public class Lyric {
 		if(fileName == null){ return false; }
 		
 		try{
-			String[] result;
-			cli = new LyricSOAPClient(fileName); 
-			
+//			String[] result;
+			String result;
+//			cli = new LyricSOAPClient(fileName); 
+			cli = new LyricClient(fileName);
 			result = cli.getResultXmlParsing();
 
 			//result[8] lyrics part
-			strLyric = result[8];
-			
+//			strLyric = result[8];
+			strLyric = result;
 			
 			int index = 0;
 			
