@@ -1,5 +1,8 @@
 package dalsong.engine;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -37,7 +40,19 @@ public class Lyric {
 //			strLyric = result[8];
 			strLyric = result;
 			
-			int index = 0;
+			int index = 0;			
+			
+			String patStr = "\\d{2}:\\d{2}\\.\\d{2}";
+			
+			Pattern pattern = Pattern.compile(patStr);
+			Matcher matcher = pattern.matcher(strLyric);
+			
+			//find the lyric start point
+			if(matcher.find()){
+				String match = matcher.group();
+				int start = strLyric.indexOf("[" + match + "]");
+				strLyric = strLyric.substring(start);
+			}
 			
 			splitStr = strLyric.split(patternStr);
 			splitTime = new String[splitStr.length-1];
@@ -45,11 +60,8 @@ public class Lyric {
 			System.out.println(strLyric);
 			System.out.println(splitStr[1]);
 			
-			
-			String patStr = "\\d{2}:\\d{2}\\.\\d{2}";
-			
-			Pattern pattern = Pattern.compile(patStr);
-			Matcher matcher = pattern.matcher(strLyric);
+			// match again from the new start point
+			matcher = pattern.matcher(strLyric);
 			while(matcher.find()){
 				String match = matcher.group();
 				match = match.replace(":", "");
