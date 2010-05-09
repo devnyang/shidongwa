@@ -2,9 +2,17 @@ package dalsong.engine;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import dalsong.util.Sentence;
 
 
 
@@ -60,6 +68,10 @@ public class Lyric {
 			System.out.println(strLyric);
 			System.out.println(splitStr[1]);
 			
+			//List storing time and lyric mapping
+			Collection <Sentence> list = new ArrayList<Sentence>();
+			
+			
 			// match again from the new start point
 			matcher = pattern.matcher(strLyric);
 			while(matcher.find()){
@@ -68,6 +80,41 @@ public class Lyric {
 				match = match.replace(".", "");
 				
 				splitTime[index] = match;
+				index++;
+				
+				list.add(new Sentence(splitStr[index], match));
+			}
+			
+			// store the same value for sharing lyric contents
+			Collections.reverse((ArrayList)list);
+			Iterator<Sentence> it = list.iterator();
+			Sentence tmpSentence = null;
+			String content = "";
+			while(it.hasNext()){
+				Sentence sentence = it.next();
+				content = sentence.getContent();
+				if(content != null &&  !"".equalsIgnoreCase(content)){
+					tmpSentence = sentence;
+				}else{
+					sentence.setContent(tmpSentence.getContent());
+				}				
+			}
+			
+			//sort the contents
+			Collections.sort((ArrayList<Sentence>)list, new Comparator<Sentence>() {
+
+                public int compare(Sentence o1, Sentence o2) {
+                    return (int) (Integer.parseInt(o1.getFromTime()) - Integer.parseInt(o2.getFromTime()));
+                }
+            });
+			
+			//reconstruct splitStr, splitTime
+			it = list.iterator();
+			index = 0;
+			while(it.hasNext()){
+				Sentence sentence = it.next();
+				splitStr[index] = sentence.getContent();
+				splitTime[index] = sentence.getFromTime();
 				index++;
 			}
 			
