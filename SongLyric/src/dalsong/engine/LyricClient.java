@@ -29,8 +29,13 @@ package dalsong.engine;
 
 
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.util.List;
+
+import org.farng.mp3.MP3File;
 
 import dalsong.util.GAEUtil;
 import dalsong.util.SearchResult;
@@ -42,12 +47,13 @@ public class LyricClient {
 	private final static String alsongUrl = "http://lyrics.alsong.co.kr/alsongwebservice/service1.asmx";
 	private HttpURLConnection httpConn;
     private String fileName;
+    private String originalName;
 	private String resultStr = "";
 	
 	private int tagSize = 0;
 
 	public LyricClient(String fileName) throws Exception {
-
+        originalName = fileName;
 		String name = fileName;
 		int pos = name.lastIndexOf("\\");
 		name = name.substring(pos+1);
@@ -79,6 +85,20 @@ public class LyricClient {
 	}
 	
 	public int getTagSize(){
+		
+		MP3File file = new MP3File();
+		try {
+			tagSize = (int)file.getMp3StartByte(new File(originalName));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			
+		}
+		
 		return tagSize;
 	}
 
