@@ -72,7 +72,7 @@ public class LyricClient {
 
         String content = "";
         try {
-            //�ȰѸ�����͸���һ����
+
             List<SearchResult> list = GAEUtil.getSearchResult("", fileName);
             content = list.get(0).getContent();
         } catch (Exception ex) {
