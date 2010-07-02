@@ -26,6 +26,11 @@ public class Lyric {
 	
 	private String strLyric;
 	
+	public static void  main(String[] args){
+		
+		new Lyric().initLyric("C:\\Users\\shidong\\Music\\戀안.mp3");
+	}
+	
 	public int getTagSize(){
 		if(cli != null){
 			return cli.getTagSize();
@@ -48,7 +53,7 @@ public class Lyric {
 //			strLyric = result[8];
 			strLyric = result;
 			
-			int index = 0;			
+
 			
 			String patStr = "\\d{2}:\\d{2}\\.\\d{2}";
 			
@@ -63,15 +68,15 @@ public class Lyric {
 			}
 			
 			splitStr = strLyric.split(patternStr);
-			splitTime = new String[splitStr.length-1];
+			splitTime = new String[splitStr.length];
 			
 			System.out.println(strLyric);
-			System.out.println(splitStr[1]);
+//			System.out.println(splitStr[1]);
 			
 			//List storing time and lyric mapping
 			Collection <Sentence> list = new ArrayList<Sentence>();
 			
-			
+			int index = 0;						
 			// match again from the new start point
 			matcher = pattern.matcher(strLyric);
 			while(matcher.find()){
@@ -79,7 +84,7 @@ public class Lyric {
 				match = match.replace(":", "");
 				match = match.replace(".", "");
 				
-				splitTime[index] = match;
+				splitTime[index+1] = match;
 				index++;
 				
 				list.add(new Sentence(splitStr[index], match));
@@ -111,18 +116,21 @@ public class Lyric {
 			//reconstruct splitStr, splitTime
 			it = list.iterator();
 			index = 0;
+			
+			System.out.println("***********************************************************");
 			while(it.hasNext()){
 				Sentence sentence = it.next();
 				splitStr[index] = sentence.getContent();
 				splitTime[index] = sentence.getFromTime();
+				System.out.println("[" + splitTime[index] + "]" + splitStr[index]);
 				index++;
+
 			}
 			
 			return true;
 			
 		}catch(Exception ex){
 			System.out.println(ex);
-//			System.out.println("예외발생!!!!!!!!!!!!!!!!!!!!!!");
 			return false;
 		}
 		
