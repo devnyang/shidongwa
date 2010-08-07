@@ -1,0 +1,13 @@
+package stocks;
+
+option java_package = "org.developerworks.stocks";
+
+message Quote{
+	required string symbol = 1;
+	required string name = 2;
+	required double price = 3;
+}
+
+message Portfolio{
+	repeated Quote quote = 1;
+}
