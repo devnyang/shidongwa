@@ -14,7 +14,7 @@ public class AudioEditTool {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		copyWaveFile("junk.wav","to.wav");
 	}
 	
 	public static void copyWaveFile(String in, String out){
