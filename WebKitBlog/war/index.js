@@ -47,8 +47,11 @@ function loadEntries(){
 	   	   	}
 		};
 		var urlStr = "/resources/feed?after=" + newest;
+		//alert("urlStr=" + urlStr);
 		xhr.open("GET", urlStr);
 		xhr.send();	
+	}else{
+		alert("navigator is off line!");
 	}
 }
 function saveLocal(entry){
@@ -65,6 +68,8 @@ function loadLocal(){
 	var e = {};
 	var id = 0;
 	var entries = [];
+	
+	//alert("localStorage.length=" + localStorage.length)
 	for (i=0; i< localStorage.length; i++){
 		id = localStorage.key(i);
 		e = JSON.parse(localStorage.getItem(id));
