@@ -1,4 +1,4 @@
-package com.stone.test;
+package com.stone.javacore;
 
 import java.util.*;
 import java.util.concurrent.*;

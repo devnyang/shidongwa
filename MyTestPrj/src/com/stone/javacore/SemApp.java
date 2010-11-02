@@ -1,5 +1,6 @@
-package com.stone.test;
-import java.util.*;import java.util.concurrent.*;
+package com.stone.javacore;
+import java.util.*;
+import java.util.concurrent.*;
 
 public class SemApp
 {

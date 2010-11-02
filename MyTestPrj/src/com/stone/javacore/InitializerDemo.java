@@ -1,4 +1,4 @@
-package com.stone.test;
+package com.stone.javacore;
 import static java.lang.System.out;
 
 public class InitializerDemo {

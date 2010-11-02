@@ -1,4 +1,5 @@
-package com.stone.test;
+package com.stone.javacore;
+
 
 class MyInterfaceImp implements MyInterface {
 
