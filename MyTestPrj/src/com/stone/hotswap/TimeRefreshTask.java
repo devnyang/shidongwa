@@ -2,7 +2,7 @@ package com.stone.hotswap;
 
 import java.lang.reflect.Method;
 
-import com.stone.classloader.swap.Foo;
+import com.stone.hotswap.swap.Foo;
 
 public class TimeRefreshTask extends java.util.TimerTask{
 
@@ -13,9 +13,9 @@ public class TimeRefreshTask extends java.util.TimerTask{
 		
 	    try { 
 	        // 每次都创建出一个新的类加载器
-	        HotswapCL cl = new HotswapCL("C:\\workspace\\MyTestPrj\\bin", new String[]{"com.stone.classloader.swap.Foo"});
+	        HotswapCL cl = new HotswapCL("C:\\workspace\\MyTestPrj\\bin", new String[]{"com.stone.hotswap.swap.Foo"});
 	        
-	        Class cls = cl.loadClass("com.stone.classloader.swap.Foo"); 
+	        Class cls = cl.loadClass("com.stone.hotswap.swap.Foo"); 
 	        
 	        //use reflection because foo should be in HotswapCL namespace,we have no way to reference it in system class loader(current classloader)
 	        Object foo = cls.newInstance(); 

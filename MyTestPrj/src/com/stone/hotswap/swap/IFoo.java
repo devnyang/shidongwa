@@ -1,4 +1,4 @@
-package com.stone.classloader.swap;
+package com.stone.hotswap.swap;
 
 public interface IFoo {
 

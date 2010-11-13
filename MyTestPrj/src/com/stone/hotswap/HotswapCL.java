@@ -15,17 +15,14 @@ class HotswapCL extends ClassLoader {
         super(null); // 指定父类加载器为 null 
         this.basedir = basedir; 
         dynaclazns = new HashSet(); 
-        try {
-			loadClassByMe(clazns);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
+
+		loadClassByMe(clazns);
+
     } 
 
-    private void loadClassByMe(String[] clazns) throws IOException { 
+    private void loadClassByMe(String[] clazns) { 
         for (int i = 0; i < clazns.length; i++) { 
-            loadDirectly(clazns[i]); 
+            //loadDirectly(clazns[i]); 
             dynaclazns.add(clazns[i]); 
         } 
     } 
@@ -54,8 +51,19 @@ class HotswapCL extends ClassLoader {
         cls = findLoadedClass(name); 
         if(!this.dynaclazns.contains(name) && cls == null) 
             cls = getSystemClassLoader().loadClass(name); 
-        if (cls == null) 
+        if (cls == null && name.startsWith("java")) 
             throw new ClassNotFoundException(name); 
+        
+        if(cls == null){
+            try {
+    			cls = loadDirectly(name);
+    		} catch (IOException e) {
+    			// TODO Auto-generated catch block
+    			e.printStackTrace();
+    			throw new ClassNotFoundException(name); 			
+    		}       	
+        }
+        
         if (resolve) 
             resolveClass(cls); 
         return cls; 

@@ -6,6 +6,6 @@ public class MySchedule {
 
 	public static void main(String[] args){   
 		   Timer timer = new Timer();   
-		   timer.schedule(new TimeRefreshTask(), 1000, 1000*30);   
+		   timer.schedule(new TimeRefreshTask(), 1000, 1000*10);   
 	}   
 }
