@@ -1,0 +1,29 @@
+<html>   
+<head>   
+  
+</head>   
+<body>   
+<div id='display'></div>   
+<script language="javascript">   
+  
+function Person(){};   
+function Man(){};   
+var person = new Person();   
+Man.prototype = person;   
+var other = new Man();   
+  
+  
+dwr(other.constructor == Man.prototype.constructor);   
+dwr(Man.prototype.constructor == person.constructor);   
+dwr(person.constructor == Person.prototype.constructor);   
+dwr(Person.prototype.constructor == Person);   
+dwr(other.constructor == Person);   
+  
+  
+function dwr(s){   
+  var display = document.getElementById('display');   
+  display.innerHTML+=s+'<br/>';   
+}   
+</script>   
+</body>   
+</html> 
