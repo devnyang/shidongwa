@@ -8,6 +8,9 @@ class MyInterfaceImp implements MyInterface {
 
 	}*/
 
+	/**
+	 * implement class can not need to handle exception, there is no exception at all. :)
+	 */
 	public void m1(){
 		// TODO Auto-generated method stub
 
