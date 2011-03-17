@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<language_setting>
+	<title_bar_text data="달쏭" />
+	<playlist_title_bar_test data="플레이리스트" />
+	<menu>
+		<file data="파일">
+			<open data="열기" />
+			<playlist data="플레이리스트" />
+			<exit data="종료" />
+		</file>
+		<option data="옵션">
+			<mini_mode data="미니모드" />
+			<lyric_mode data="가사모드" />
+			<sync data="가사 싱크 조절" />
+			<font data="가사창 폰트 설정" />
+		</option>
+		<theme data="테마" >
+		</theme>
+		<help data="도움말">
+			<about data="달쏭은..." />
+		</help>
+	</menu>
+	<popup_menu>
+		<delete data="선택한 파일 리스트에서 삭제" />
+		<information data="정보" />
+	</popup_menu>
+	<tag_infomation>
+		<track data="트랙#" />
+		<title data="제목" />
+		<artist data="가수" />
+		<album data="앨범" />
+		<year data="년도" />
+		<genre data="장르" />
+		<comment data="설명" />
+		<composer data="작곡자" />
+		<original_artist data="원곡가수" />
+		<copyright data="저작권" />
+		<url data="인터넷 주소" />
+		<encoded_by data="인코딩 한 사람" />
+	</tag_infomation>
+</language_setting>
